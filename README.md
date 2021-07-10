@@ -1,5 +1,7 @@
 # bootcamp-regex
 
+Projeto realizado para apresentação do Bootcamp sobre Regex.
+
 ## Project setup
 ```
 yarn install
