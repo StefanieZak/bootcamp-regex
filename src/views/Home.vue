@@ -30,6 +30,7 @@
             type="tel"
             v-model="telefone"
             @change="validarTelefone"
+            maxlength="17"
           />
 
           <label class="cpf" for="cpf">CPF</label>
@@ -39,6 +40,7 @@
             type="tel"
             v-model="cpf"
             @change="validarCpf"
+            maxlength="14"
           />
         </div>
       </form>
@@ -65,6 +67,7 @@
             type="tel"
             v-model="numeroCartao"
             @change="validarNumeroCartao"
+            maxlength="19"
           />
 
           <label class="cod-seguranca" for="cod-seguranca"
@@ -78,6 +81,7 @@
             @focus="turnBack"
             @blur="turnFront"
             @change="validarCodigoSeguranca"
+            maxlength="4"
           />
 
           <label class="validade-cartao" for="validade-cartao"
@@ -89,6 +93,7 @@
             type="tel"
             v-model="validadeCartao"
             @change="validarValidadeCartao"
+            maxlength="7"
           />
         </form>
         <div class="card flip" @click="turnCard">
