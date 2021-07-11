@@ -134,7 +134,7 @@
           </div>
         </div>
       </div>
-      <button class="btn-cadastrar">Cadastrar</button>
+      <button class="btn-cadastrar" @click="cadastrar">Cadastrar</button>
     </div>
   </div>
 </template>
@@ -152,6 +152,16 @@ export default {
       numeroCartao: "",
       codSeguranca: "",
       validadeCartao: "",
+      dadosValidos: {
+        nome: false,
+        email: false,
+        telefone: false,
+        cpf: false,
+        nomeCartao: false,
+        numeroCartao: false,
+        codSeguranca: false,
+        validadeCartao: false,
+      },
     };
   },
   methods: {
@@ -168,12 +178,12 @@ export default {
       card.classList.add("flip");
     },
     validarNome(event) {
-      console.log(this.nome);
       if (!this.nome) {
         event.target.style.border = "2px solid red";
         console.log("nome inválido");
       } else {
         event.target.style.border = "2px solid #a9b1b7";
+        this.dadosValidos.nome = true;
         console.log("nome válido");
       }
     },
@@ -183,6 +193,7 @@ export default {
       //   console.log("email inválido");
       // } else {
       //   event.target.style.border = "2px solid #a9b1b7";
+      //   this.dadosValidos.email = true;
       //   console.log("email válido");
       // }
     },
@@ -192,6 +203,7 @@ export default {
       //   console.log("telefone inválido");
       // } else {
       //   event.target.style.border = "2px solid #a9b1b7";
+      //   this.dadosValidos.telefone = true;
       //   console.log("telefone válido");
       // }
     },
@@ -201,6 +213,7 @@ export default {
       //   console.log("cpf inválido");
       // } else {
       //   event.target.style.border = "2px solid #a9b1b7";
+      //   this.dadosValidos.cpf = true;
       //   console.log("cpf válido");
       // }
     },
@@ -210,6 +223,7 @@ export default {
       //   console.log("nome cartão inválido");
       // } else {
       //   event.target.style.border = "2px solid #a9b1b7";
+      //   this.dadosValidos.nomeCartao = true;
       //   console.log("nome cartão válido");
       // }
     },
@@ -219,6 +233,7 @@ export default {
       //   console.log("número cartão inválido");
       // } else {
       //   event.target.style.border = "2px solid #a9b1b7";
+      //   this.dadosValidos.numeroCartao = true;
       //   console.log("número cartão válido");
       // }
     },
@@ -228,6 +243,7 @@ export default {
       //   console.log("código segurança inválido");
       // } else {
       //   event.target.style.border = "2px solid #a9b1b7";
+      //   this.dadosValidos.codSeguranca = true;
       //   console.log("código segurança válido");
       // }
     },
@@ -237,8 +253,23 @@ export default {
       //   console.log("validade cartão inválido");
       // } else {
       //   event.target.style.border = "2px solid #a9b1b7";
+      //   this.dadosValidos.validadeCartao = true;
       //   console.log("validade cartão válido");
       // }
+    },
+    cadastrar() {
+      if (
+        this.dadosValidos.nome &&
+        this.dadosValidos.email &&
+        this.dadosValidos.telefone &&
+        this.dadosValidos.cpf &&
+        this.dadosValidos.nomeCartao &&
+        this.dadosValidos.numeroCartao &&
+        this.dadosValidos.codSeguranca &&
+        this.dadosValidos.validadeCartao
+      ) {
+        this.$router.push("/cadastrofinalizado");
+      }
     },
   },
 };
