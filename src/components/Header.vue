@@ -51,7 +51,7 @@ export default {
 }
 
 .menu {
-  width: 80%;
+  width: 70%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -85,9 +85,6 @@ export default {
   }
   .logo a {
     font-size: 1.5rem;
-  }
-  .menu {
-    width: 70%;
   }
   .menu a {
     font-size: 1rem;
