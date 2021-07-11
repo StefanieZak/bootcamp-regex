@@ -5,17 +5,41 @@
       <form class="dados-pessoais-form">
         <div class="nome-email">
           <label class="nome" for="nome">Nome Completo</label>
-          <input id="nome" name="nome" type="text" v-model="nome" />
+          <input
+            id="nome"
+            name="nome"
+            type="text"
+            v-model="nome"
+            @change="validarNome"
+          />
 
           <label class="email" for="email">E-mail</label>
-          <input id="email" name="email" type="email" v-model="email" />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            v-model="email"
+            @change="validarEmail"
+          />
         </div>
         <div class="telefone-cpf">
           <label class="telefone" for="telefone">Telefone</label>
-          <input id="telefone" name="telefone" type="tel" v-model="telefone" />
+          <input
+            id="telefone"
+            name="telefone"
+            type="tel"
+            v-model="telefone"
+            @change="validarTelefone"
+          />
 
           <label class="cpf" for="cpf">CPF</label>
-          <input id="cpf" name="cpf" type="tel" v-model="cpf" />
+          <input
+            id="cpf"
+            name="cpf"
+            type="tel"
+            v-model="cpf"
+            @change="validarCpf"
+          />
         </div>
       </form>
     </div>
@@ -29,6 +53,7 @@
             name="nome-cartao"
             type="text"
             v-model="nomeCartao"
+            @change="validarNomeCartao"
           />
 
           <label class="numero-cartao" for="numero-cartao"
@@ -39,6 +64,7 @@
             name="numero-cartao"
             type="tel"
             v-model="numeroCartao"
+            @change="validarNumeroCartao"
           />
 
           <label class="cod-seguranca" for="cod-seguranca"
@@ -51,6 +77,7 @@
             v-model="codSeguranca"
             @focus="turnBack"
             @blur="turnFront"
+            @change="validarCodigoSeguranca"
           />
 
           <label class="validade-cartao" for="validade-cartao"
@@ -61,6 +88,7 @@
             name="validade-cartao"
             type="tel"
             v-model="validadeCartao"
+            @change="validarValidadeCartao"
           />
         </form>
         <div class="card flip" @click="turnCard">
@@ -138,6 +166,79 @@ export default {
     turnFront() {
       const card = document.querySelector(".card");
       card.classList.add("flip");
+    },
+    validarNome(event) {
+      console.log(this.nome);
+      if (!this.nome) {
+        event.target.style.border = "2px solid red";
+        console.log("nome inválido");
+      } else {
+        event.target.style.border = "2px solid #a9b1b7";
+        console.log("nome válido");
+      }
+    },
+    validarEmail() {
+      // if() {
+      //   event.target.style.border = "2px solid red";
+      //   console.log("email inválido");
+      // } else {
+      //   event.target.style.border = "2px solid #a9b1b7";
+      //   console.log("email válido");
+      // }
+    },
+    validarTelefone() {
+      // if() {
+      //   event.target.style.border = "2px solid red";
+      //   console.log("telefone inválido");
+      // } else {
+      //   event.target.style.border = "2px solid #a9b1b7";
+      //   console.log("telefone válido");
+      // }
+    },
+    validarCpf() {
+      // if() {
+      //   event.target.style.border = "2px solid red";
+      //   console.log("cpf inválido");
+      // } else {
+      //   event.target.style.border = "2px solid #a9b1b7";
+      //   console.log("cpf válido");
+      // }
+    },
+    validarNomeCartao() {
+      // if() {
+      //   event.target.style.border = "2px solid red";
+      //   console.log("nome cartão inválido");
+      // } else {
+      //   event.target.style.border = "2px solid #a9b1b7";
+      //   console.log("nome cartão válido");
+      // }
+    },
+    validarNumeroCartao() {
+      // if() {
+      //   event.target.style.border = "2px solid red";
+      //   console.log("número cartão inválido");
+      // } else {
+      //   event.target.style.border = "2px solid #a9b1b7";
+      //   console.log("número cartão válido");
+      // }
+    },
+    validarCodigoSeguranca() {
+      // if() {
+      //   event.target.style.border = "2px solid red";
+      //   console.log("código segurança inválido");
+      // } else {
+      //   event.target.style.border = "2px solid #a9b1b7";
+      //   console.log("código segurança válido");
+      // }
+    },
+    validarValidadeCartao() {
+      // if() {
+      //   event.target.style.border = "2px solid red";
+      //   console.log("validade cartão inválido");
+      // } else {
+      //   event.target.style.border = "2px solid #a9b1b7";
+      //   console.log("validade cartão válido");
+      // }
     },
   },
 };
