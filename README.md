@@ -1,7 +1,6 @@
 # bootcamp-regex
 
 Projeto realizado para apresentação do Bootcamp sobre Regex.<br>
-https://stefaniezak.github.io/bootcamp-regex/
 
 ## Project setup
 ```
