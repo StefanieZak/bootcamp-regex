@@ -402,10 +402,6 @@ export default {
   transform: rotateY(180deg);
 }
 
-.verso-cartao {
-  padding: 15px 0px 0px;
-}
-
 .flip {
   transform: rotateY(180deg);
 }
@@ -456,6 +452,10 @@ export default {
   background: #ffcc00;
   position: absolute;
   right: 0;
+}
+
+.verso-cartao {
+  padding: 15px 0px 0px;
 }
 
 .faixa-preta {

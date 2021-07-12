@@ -357,7 +357,7 @@
           ? -> O caracter se torna opcional, pode ou não existir.
         </p>
         <div class="codigo">
-          <p style="font-weight: bold">const regex = /a?r?r?aia/g;</p>
+          <p style="font-weight: bold">const regex = /a?r?raia/g;</p>
           <p>
             const frase = "O certo é raia ou arraia?"
           </p>
@@ -383,40 +383,6 @@
           <p>
             // Juntamente com ___ e CSS, o JavaScript é uma das três principais
             tecnologias da World Wide Web.
-          </p>
-        </div>
-      </div>
-
-      <div class="conteudo" id="word-boundary">
-        <h3>Word Boundary</h3>
-        <p>
-          \b -> Faz uma seleção que tenha inicio e fim de não caracteres.
-        </p>
-        <div class="codigo">
-          <p style="font-weight: bold">const regex = /\bjava\b/gi;</p>
-          <p>
-            const frase = "Diferença entre Java e JavaScript."
-          </p>
-          <p style="font-weight: bold">frase.replace(regex, 'CSS');</p>
-          <p>
-            // Diferença entre CSS e JavaScript.
-          </p>
-        </div>
-      </div>
-
-      <div class="conteudo" id="not-word-boundary">
-        <h3>Not Word Boundary</h3>
-        <p>
-          \B ->Seleciona o que não for word boundary.
-        </p>
-        <div class="codigo">
-          <p style="font-weight: bold">const regex = /\B\d+\B/gi;</p>
-          <p>
-            const frase = "11_22 33-44 55é66 77e88"
-          </p>
-          <p style="font-weight: bold">frase.replace(regex, 'CSS');</p>
-          <p>
-            // 1x_x2 33-44 55é66 7xex8
           </p>
         </div>
       </div>
