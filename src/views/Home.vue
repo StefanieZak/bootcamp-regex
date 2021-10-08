@@ -183,84 +183,78 @@ export default {
       card.classList.add("flip");
     },
     validarNome(event) {
-      if (!this.nome) {
+      if (
+        !this.nome.trim().match(/[ ]/g) ||
+        this.nome.match(/[^a-záéíóúâêôãõç ]+/gi)
+      ) {
         event.target.style.border = "2px solid red";
-        console.log("nome inválido");
       } else {
         event.target.style.border = "2px solid #a9b1b7";
         this.dadosValidos.nome = true;
-        console.log("nome válido");
       }
     },
-    validarEmail() {
-      // if() {
-      //   event.target.style.border = "2px solid red";
-      //   console.log("email inválido");
-      // } else {
-      //   event.target.style.border = "2px solid #a9b1b7";
-      //   this.dadosValidos.email = true;
-      //   console.log("email válido");
-      // }
+    validarEmail(event) {
+      if (!this.email.match(/^([\w.-])+@[\w-]+\.([\w.-]+)$/gi)) {
+        event.target.style.border = "2px solid red";
+      } else {
+        event.target.style.border = "2px solid #a9b1b7";
+        this.dadosValidos.email = true;
+      }
     },
-    validarTelefone() {
-      // if() {
-      //   event.target.style.border = "2px solid red";
-      //   console.log("telefone inválido");
-      // } else {
-      //   event.target.style.border = "2px solid #a9b1b7";
-      //   this.dadosValidos.telefone = true;
-      //   console.log("telefone válido");
-      // }
+    validarTelefone(event) {
+      if (
+        !this.telefone.match(
+          /(\+?\d{2}\s?)?(\(?\d{2}\)?[\s-]?)\d{4,5}[\s-]?\d{4}/g
+        )
+      ) {
+        event.target.style.border = "2px solid red";
+      } else {
+        event.target.style.border = "2px solid #a9b1b7";
+        this.dadosValidos.telefone = true;
+      }
     },
-    validarCpf() {
-      // if() {
-      //   event.target.style.border = "2px solid red";
-      //   console.log("cpf inválido");
-      // } else {
-      //   event.target.style.border = "2px solid #a9b1b7";
-      //   this.dadosValidos.cpf = true;
-      //   console.log("cpf válido");
-      // }
+    validarCpf(event) {
+      if (!this.cpf.match(/(\d{3}[ .-]?){3}\d{2}/g)) {
+        event.target.style.border = "2px solid red";
+      } else {
+        event.target.style.border = "2px solid #a9b1b7";
+        this.dadosValidos.cpf = true;
+      }
     },
-    validarNomeCartao() {
-      // if() {
-      //   event.target.style.border = "2px solid red";
-      //   console.log("nome cartão inválido");
-      // } else {
-      //   event.target.style.border = "2px solid #a9b1b7";
-      //   this.dadosValidos.nomeCartao = true;
-      //   console.log("nome cartão válido");
-      // }
+    validarNomeCartao(event) {
+      if (
+        !this.nomeCartao.trim().match(/[ ]/gi) ||
+        this.nomeCartao.match(/([^a-záéíóúâêôãõç ]+)/gi)
+      ) {
+        event.target.style.border = "2px solid red";
+      } else {
+        event.target.style.border = "2px solid #a9b1b7";
+        this.dadosValidos.nomeCartao = true;
+      }
     },
-    validarNumeroCartao() {
-      // if() {
-      //   event.target.style.border = "2px solid red";
-      //   console.log("número cartão inválido");
-      // } else {
-      //   event.target.style.border = "2px solid #a9b1b7";
-      //   this.dadosValidos.numeroCartao = true;
-      //   console.log("número cartão válido");
-      // }
+    validarNumeroCartao(event) {
+      if (!this.numeroCartao.match(/(\d{4}[ ]?){4}/g)) {
+        event.target.style.border = "2px solid red";
+      } else {
+        event.target.style.border = "2px solid #a9b1b7";
+        this.dadosValidos.numeroCartao = true;
+      }
     },
-    validarCodigoSeguranca() {
-      // if() {
-      //   event.target.style.border = "2px solid red";
-      //   console.log("código segurança inválido");
-      // } else {
-      //   event.target.style.border = "2px solid #a9b1b7";
-      //   this.dadosValidos.codSeguranca = true;
-      //   console.log("código segurança válido");
-      // }
+    validarCodigoSeguranca(event) {
+      if (!this.codSeguranca.match(/\d{3,4}/g)) {
+        event.target.style.border = "2px solid red";
+      } else {
+        event.target.style.border = "2px solid #a9b1b7";
+        this.dadosValidos.codSeguranca = true;
+      }
     },
-    validarValidadeCartao() {
-      // if() {
-      //   event.target.style.border = "2px solid red";
-      //   console.log("validade cartão inválido");
-      // } else {
-      //   event.target.style.border = "2px solid #a9b1b7";
-      //   this.dadosValidos.validadeCartao = true;
-      //   console.log("validade cartão válido");
-      // }
+    validarValidadeCartao(event) {
+      if (!this.validadeCartao.match(/[01]\d\/\d{2,4}/g)) {
+        event.target.style.border = "2px solid red";
+      } else {
+        event.target.style.border = "2px solid #a9b1b7";
+        this.dadosValidos.validadeCartao = true;
+      }
     },
     cadastrar() {
       if (
@@ -402,10 +396,6 @@ export default {
   transform: rotateY(180deg);
 }
 
-.verso-cartao {
-  padding: 15px 0px 0px;
-}
-
 .flip {
   transform: rotateY(180deg);
 }
@@ -456,6 +446,10 @@ export default {
   background: #ffcc00;
   position: absolute;
   right: 0;
+}
+
+.verso-cartao {
+  padding: 15px 0px 0px;
 }
 
 .faixa-preta {
