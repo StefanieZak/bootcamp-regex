@@ -3,7 +3,7 @@
 Projeto realizado para apresentação do Bootcamp sobre Regex.<br>
 https://bootcamp-regex.vercel.app/
 
-![Bootcamp Regex](./src/assets/bootcamp.png)
+<img src="./src/assets/bootcamp.png" width="70%">
 
 ## Project setup
 
