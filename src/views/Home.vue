@@ -29,6 +29,7 @@
             name="telefone"
             type="tel"
             v-model="telefone"
+            @input="phoneMask"
             @change="validatePhone"
             maxlength="17"
           />
@@ -39,6 +40,7 @@
             name="cpf"
             type="tel"
             v-model="cpf"
+            @input="cpfMask"
             @change="validateCpf"
             maxlength="14"
           />
@@ -66,6 +68,7 @@
             name="numero-cartao"
             type="tel"
             v-model="numeroCartao"
+            @input="cardNumberMask"
             @change="validateCardNumber"
             maxlength="19"
           />
@@ -92,8 +95,9 @@
             name="validade-cartao"
             type="tel"
             v-model="validadeCartao"
+            @input="cardValidityMask"
             @change="validateCardValidity"
-            maxlength="7"
+            maxlength="5"
           />
         </form>
         <div class="card flip" @click="turnCard">
@@ -170,6 +174,28 @@ export default {
     };
   },
   methods: {
+    cpfMask() {
+      this.cpf = this.cpf.replace(/\D/g, "");
+      this.cpf = this.cpf.replace(/(\d{3})(\d)/, "$1.$2");
+      this.cpf = this.cpf.replace(/(\d{3})(\d)/, "$1.$2");
+      this.cpf = this.cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+    },
+    phoneMask() {
+      this.telefone = this.telefone.replace(/\D/g, "");
+      this.telefone = this.telefone.replace(/^(\d{2})(\d)/g, "($1) $2");
+      this.telefone = this.telefone.replace(/(\d{4,5})(\d)/, "$1-$2");
+    },
+    cardNumberMask() {
+      this.numeroCartao = this.numeroCartao.replace(/\D/g, "");
+      this.numeroCartao = this.numeroCartao.replace(/(\d{4})(?=\d)/g, "$1 ");
+    },
+    cardValidityMask() {
+      this.validadeCartao = this.validadeCartao.replace(/\D/g, "");
+      this.validadeCartao = this.validadeCartao.replace(
+        /(\d{2})(\d{0,2})/,
+        "$1/$2"
+      );
+    },
     turnCard() {
       const card = document.querySelector(".card");
       card.classList.toggle("flip");
