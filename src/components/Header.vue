@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="logo">
-      <img src="@/assets/clapboard.png" alt="clapboard" />
+      <img src="@/assets/clapboard.png" alt="clapperboard" />
       <router-link to="/">Type Movies</router-link>
     </div>
     <nav class="menu">
@@ -61,16 +61,10 @@ export default {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.125rem;
   color: #fff;
-}
-
-.menu a + a {
   margin-left: 40px;
 }
 
-.menu a.router-link-exact-active {
-  border-bottom: 1px solid yellow;
-}
-
+.menu a.router-link-exact-active,
 .menu a:hover {
   border-bottom: 1px solid yellow;
 }
@@ -80,49 +74,55 @@ export default {
     padding-left: 50px;
     padding-right: 50px;
   }
+
   .logo {
     margin-right: 30px;
   }
+
   .logo a {
     font-size: 1.5rem;
   }
+
   .menu a {
     font-size: 1rem;
-  }
-  .menu a + a {
     margin-left: 30px;
   }
 }
+
 @media screen and (max-width: 600px) {
   .header {
     padding-left: 20px;
     padding-right: 20px;
   }
+
   .logo {
     margin-right: 10px;
   }
+
   .logo a {
     font-size: 1.125rem;
   }
+
   .menu {
     width: 60%;
   }
+
   .menu a {
     font-size: 0.875rem;
-  }
-  .menu a + a {
     margin-left: 20px;
   }
 }
 
 @media screen and (max-width: 375px) {
   .logo {
-    margin-right: 0px;
+    margin-right: 0;
   }
+
   .menu {
     width: 75%;
   }
-  .menu a + a {
+
+  .menu a {
     margin-left: 20px;
   }
 }

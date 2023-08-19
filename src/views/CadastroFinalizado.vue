@@ -1,12 +1,12 @@
 <template>
-  <div class="container">
+  <main class="container">
     <h2 class="titulo">Cadastro Finalizado</h2>
     <p class="paragrafo">
       Cadastro efetuado com sucesso!<br />
       Pegue sua pipoca e divirta-se.
     </p>
     <img class="popcorn" src="@/assets/popcorn2.png" alt="pipoca" />
-  </div>
+  </main>
 </template>
 
 <script>

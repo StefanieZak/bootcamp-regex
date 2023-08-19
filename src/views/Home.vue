@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="dados-pessoais">
+  <main class="container">
+    <section class="dados-pessoais">
       <h2>Dados Pessoais</h2>
       <form class="dados-pessoais-form">
         <div class="nome-email">
@@ -44,8 +44,8 @@
           />
         </div>
       </form>
-    </div>
-    <div class="dados-cartao">
+    </section>
+    <section class="dados-cartao">
       <h2>Dados do Cartão</h2>
       <div class="dados-cartao-form">
         <form>
@@ -140,8 +140,8 @@
         </div>
       </div>
       <button class="btn-cadastrar" @click="cadastrar">Cadastrar</button>
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 
 <script>

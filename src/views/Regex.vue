@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <main class="container">
     <h2 class="titulo">Resumo Regex</h2>
     <div class="wrapper">
       <div class="links">
@@ -440,7 +440,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
