@@ -10,7 +10,7 @@
             name="nome"
             type="text"
             v-model="nome"
-            @change="validarNome"
+            @change="validateName"
           />
 
           <label class="email" for="email">E-mail</label>
@@ -19,7 +19,7 @@
             name="email"
             type="email"
             v-model="email"
-            @change="validarEmail"
+            @change="validateEmail"
           />
         </div>
         <div class="telefone-cpf">
@@ -29,7 +29,7 @@
             name="telefone"
             type="tel"
             v-model="telefone"
-            @change="validarTelefone"
+            @change="validatePhone"
             maxlength="17"
           />
 
@@ -39,7 +39,7 @@
             name="cpf"
             type="tel"
             v-model="cpf"
-            @change="validarCpf"
+            @change="validateCpf"
             maxlength="14"
           />
         </div>
@@ -55,7 +55,7 @@
             name="nome-cartao"
             type="text"
             v-model="nomeCartao"
-            @change="validarNomeCartao"
+            @change="validateCardName"
           />
 
           <label class="numero-cartao" for="numero-cartao"
@@ -66,7 +66,7 @@
             name="numero-cartao"
             type="tel"
             v-model="numeroCartao"
-            @change="validarNumeroCartao"
+            @change="validateCardNumber"
             maxlength="19"
           />
 
@@ -80,7 +80,7 @@
             v-model="codSeguranca"
             @focus="turnBack"
             @blur="turnFront"
-            @change="validarCodigoSeguranca"
+            @change="validateSecurityNumber"
             maxlength="4"
           />
 
@@ -92,7 +92,7 @@
             name="validade-cartao"
             type="tel"
             v-model="validadeCartao"
-            @change="validarValidadeCartao"
+            @change="validateCardValidity"
             maxlength="7"
           />
         </form>
@@ -139,7 +139,7 @@
           </div>
         </div>
       </div>
-      <button class="btn-cadastrar" @click="cadastrar">Cadastrar</button>
+      <button class="btn-register" @click="register">Cadastrar</button>
     </section>
   </main>
 </template>
@@ -182,91 +182,102 @@ export default {
       const card = document.querySelector(".card");
       card.classList.add("flip");
     },
-    validarNome(event) {
-      if (
-        !this.nome.trim().match(/[ ]/g) ||
-        this.nome.match(/[^a-záéíóúâêôãõç ]+/gi)
-      ) {
+    validateName(event) {
+      const nome = this.nome.trim();
+      const nomeValido = nome.match(/^[a-zA-Záéíóúâêôãõç ]+$/gi);
+
+      if (!nomeValido) {
         event.target.style.border = "2px solid red";
       } else {
         event.target.style.border = "2px solid #a9b1b7";
         this.dadosValidos.nome = true;
       }
     },
-    validarEmail(event) {
-      if (!this.email.match(/^([\w.-])+@[\w-]+\.([\w.-]+)$/gi)) {
+    validateEmail(event) {
+      const emailValido = this.email.match(/^[\w.-]+@[\w-]+\.[\w.-]+$/gi);
+
+      if (!emailValido) {
         event.target.style.border = "2px solid red";
       } else {
         event.target.style.border = "2px solid #a9b1b7";
         this.dadosValidos.email = true;
       }
     },
-    validarTelefone(event) {
-      if (
-        !this.telefone.match(
-          /(\+?\d{2}\s?)?(\(?\d{2}\)?[\s-]?)\d{4,5}[\s-]?\d{4}/g
-        )
-      ) {
+    validatePhone(event) {
+      const telefoneValido = this.telefone.match(
+        /^(\+\d{2}\s?)?(\(?\d{2}\)?[\s-]?)\d{4,5}[\s-]?\d{4}$/
+      );
+
+      if (!telefoneValido) {
         event.target.style.border = "2px solid red";
       } else {
         event.target.style.border = "2px solid #a9b1b7";
         this.dadosValidos.telefone = true;
       }
     },
-    validarCpf(event) {
-      if (!this.cpf.match(/(\d{3}[ .-]?){3}\d{2}/g)) {
+
+    validateCpf(event) {
+      const cpfValido = this.cpf.match(
+        /^\d{3}[ .-]?\d{3}[ .-]?\d{3}[ .-]?\d{2}$/
+      );
+
+      if (!cpfValido) {
         event.target.style.border = "2px solid red";
       } else {
         event.target.style.border = "2px solid #a9b1b7";
         this.dadosValidos.cpf = true;
       }
     },
-    validarNomeCartao(event) {
-      if (
-        !this.nomeCartao.trim().match(/[ ]/gi) ||
-        this.nomeCartao.match(/([^a-záéíóúâêôãõç ]+)/gi)
-      ) {
+
+    validateCardName(event) {
+      const nomeCartao = this.nomeCartao.trim();
+
+      if (!nomeCartao.match(/^[a-zA-Záéíóúâêôãõç\s]+$/)) {
         event.target.style.border = "2px solid red";
       } else {
         event.target.style.border = "2px solid #a9b1b7";
         this.dadosValidos.nomeCartao = true;
       }
     },
-    validarNumeroCartao(event) {
-      if (!this.numeroCartao.match(/(\d{4}[ ]?){4}/g)) {
+    validateCardNumber(event) {
+      const numeroCartao = this.numeroCartao.replace(/\s/g, ""); // Remover espaços em branco
+
+      if (!/^\d{16}$/.test(numeroCartao)) {
         event.target.style.border = "2px solid red";
       } else {
         event.target.style.border = "2px solid #a9b1b7";
         this.dadosValidos.numeroCartao = true;
       }
     },
-    validarCodigoSeguranca(event) {
-      if (!this.codSeguranca.match(/\d{3,4}/g)) {
+    validateSecurityNumber(event) {
+      if (!/^\d{3,4}$/.test(this.codSeguranca)) {
         event.target.style.border = "2px solid red";
       } else {
         event.target.style.border = "2px solid #a9b1b7";
         this.dadosValidos.codSeguranca = true;
       }
     },
-    validarValidadeCartao(event) {
-      if (!this.validadeCartao.match(/[01]\d\/\d{2,4}/g)) {
+    validateCardValidity(event) {
+      if (!/^(0[1-9]|1[0-2])\/\d{2,4}$/.test(this.validadeCartao)) {
         event.target.style.border = "2px solid red";
       } else {
         event.target.style.border = "2px solid #a9b1b7";
         this.dadosValidos.validadeCartao = true;
       }
     },
-    cadastrar() {
-      if (
-        this.dadosValidos.nome &&
-        this.dadosValidos.email &&
-        this.dadosValidos.telefone &&
-        this.dadosValidos.cpf &&
-        this.dadosValidos.nomeCartao &&
-        this.dadosValidos.numeroCartao &&
-        this.dadosValidos.codSeguranca &&
-        this.dadosValidos.validadeCartao
-      ) {
+    register() {
+      const validFields = [
+        "nome",
+        "email",
+        "telefone",
+        "cpf",
+        "nomeCartao",
+        "numeroCartao",
+        "codSeguranca",
+        "validadeCartao",
+      ];
+
+      if (validFields.every((field) => this.dadosValidos[field])) {
         this.$router.push("/cadastrofinalizado");
       }
     },
@@ -493,7 +504,7 @@ export default {
   margin-top: 5px;
 }
 
-.btn-cadastrar {
+.btn-register {
   display: flex;
   margin: 20px auto 60px;
   color: #fff;
@@ -505,7 +516,7 @@ export default {
   cursor: pointer;
 }
 
-.btn-cadastrar:hover {
+.btn-register:hover {
   background: #c75d5d;
 }
 
@@ -553,7 +564,7 @@ export default {
   .card {
     margin-left: 110px;
   }
-  .btn-cadastrar {
+  .btn-register {
     margin: 180px auto 30px;
   }
 }
